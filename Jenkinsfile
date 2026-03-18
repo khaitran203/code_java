@@ -6,6 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building.....'
+                sh "chmod +x hello.sh"
                 sh "./hello.sh"
             }
         }
