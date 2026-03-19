@@ -1,28 +1,17 @@
 pipeline {
     agent any
-   
 
     stages {
-        stage('Build') {
+        stage('full') {
             steps {
-                echo 'Building.....'
-                sh "chmod +x hello.sh"
-                sh "./hello.sh"
+                sh 'cat item/output.txt'
             }
         }
-
-        stage('Test') {
-            when {
-                changeset '**/*.sh'
-            }
-            steps {
-                echo 'Testing.....'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying.....'
+        stage ('dir'){
+            steps{
+               dir('item') {
+                     sh 'cat output.txt'
+                }
             }
         }
     }
